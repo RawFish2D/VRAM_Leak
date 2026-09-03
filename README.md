@@ -6,6 +6,7 @@ Example project that triggers a VRAM memory leak on AMD GPU drivers by just prop
 * A working GPU.
 * OpenGL 3.0 support.
 * Monitoring software (RTSS for per-process VRAM usage tracking, or HWInfo for total system VRAM usage) to observe the leak, as this app does not display VRAM usage by itself.
+* Java 8 or newer.
 
 ## Build
 To build the project run this command:
