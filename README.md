@@ -2,6 +2,8 @@
 
 Example project that triggers a VRAM memory leak on AMD GPU drivers by just properly using OpenGL functions.
 
+<img width="800" height="413" alt="vram_leak_in_action" src="https://github.com/user-attachments/assets/d7885a6c-bd0b-4649-b9c3-0af2e4f6612b" />
+
 ## Requirements
 * A working GPU.
 * OpenGL 3.0 support.
