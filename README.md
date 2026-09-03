@@ -6,7 +6,6 @@ Example project that triggers a VRAM memory leak on AMD GPU drivers by just prop
 * A working GPU.
 * OpenGL 3.0 support.
 * Monitoring software (RTSS for per-process VRAM usage tracking, or HWInfo for total system VRAM usage) to observe the leak, as this app does not display VRAM usage by itself.
-* JDK 8 or newer.
 
 ## Build
 To build the project run this command:
@@ -22,7 +21,11 @@ java -jar VRAM_Leak.jar
 This project has two modes to observe the leak, and they are controlled by keys:
 - 1 Key: Continuous mode. It will upload data every frame, leaking VRAM if Leak is enabled (L key)
 - 2 Key: Step mode. It will only upload data for each S key press, leaking VRAM if Leak is enabled (L key)
-- L Key: Toggles the memory leak code, on or off.
+
+Other keys:
+- L Key: toggles the memory leak code, on or off.
+- Space: pauses memory leaker in Continuous mode.
+- Escape: closes the program.
 
 ## How does it work?
 It creates an empty texture and a pixel buffer every frame:
