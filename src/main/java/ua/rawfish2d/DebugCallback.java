@@ -1,15 +1,13 @@
 package ua.rawfish2d;
 
-import lombok.RequiredArgsConstructor;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GLDebugMessageCallback;
 
 import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL43.*;
 
-@RequiredArgsConstructor
 public class DebugCallback {
-	private final long windowHandle;
+	private GLDebugMessageCallback debugCallback;
 
 	/**
 	 * Requires OpenGL 4.3
@@ -19,6 +17,7 @@ public class DebugCallback {
 			System.err.print("Debug callback requires OpenGL 4.3 or higher.\n");
 			return;
 		}
+		this.debugCallback = callback;
 		glEnable(GL_DEBUG_OUTPUT);
 		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 		glDebugMessageCallback(callback, 0);
@@ -181,5 +180,9 @@ public class DebugCallback {
 			index++;
 		}
 		return stringBuilder.toString();
+	}
+
+	public void destroy() {
+		debugCallback.free();
 	}
 }

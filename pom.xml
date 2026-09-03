@@ -16,10 +16,6 @@
 		<!-- https://mvnrepository.com/artifact/org.lwjgl/lwjgl -->
 		<lwjgl3.version>3.4.3</lwjgl3.version>
 		<lwjgl3.natives>natives-windows</lwjgl3.natives>
-		<!-- https://mvnrepository.com/artifact/org.joml/joml -->
-		<joml.version>1.10.9</joml.version>
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-		<lombok.version>1.18.46</lombok.version>
 	</properties>
 
 	<build>
@@ -157,9 +153,6 @@
 			<classifier>${lwjgl.natives}</classifier>
 			<version>${lwjgl3.version}</version>
 		</dependency>
-		<!-- LWJGL 3 -->
-
-		<!-- LWJGL 3 (always include) -->
 		<dependency>
 			<groupId>org.lwjgl</groupId>
 			<artifactId>lwjgl</artifactId>
@@ -183,19 +176,7 @@
 			<classifier>${lwjgl.natives}</classifier>
 			<version>${lwjgl3.version}</version>
 		</dependency>
-		<!-- LWJGL 3 (always include) -->
-		<dependency>
-			<groupId>org.joml</groupId>
-			<artifactId>joml</artifactId>
-			<version>${joml.version}</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>${lombok.version}</version>
-			<scope>provided</scope>
-		</dependency>
+		<!-- LWJGL 3 -->
 	</dependencies>
 
 </project>

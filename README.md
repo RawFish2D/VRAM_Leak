@@ -34,7 +34,7 @@ Other keys:
 It creates an empty texture and a pixel buffer every frame:
 ```java
 pboID = glGenBuffers();
-textureID = glGenTexture();
+textureID = glGenTextures();
 ```
 Then, inside a loop, it binds and orphans the pixel buffer:
 ```java

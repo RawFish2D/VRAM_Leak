@@ -53,7 +53,7 @@ public class VRAMLeak {
 		System.out.printf("Version: %s\n", GL11.glGetString(GL11.GL_VERSION));
 		System.out.printf("Renderer: %s\n", GL11.glGetString(GL11.GL_RENDERER));
 
-		DebugCallback debugCallback = new DebugCallback(window);
+		DebugCallback debugCallback = new DebugCallback();
 		debugCallback.setDefaultDebugCallback();
 		GLFW.glfwSetKeyCallback(window, new GLFWKeyCallback() {
 			@Override
@@ -110,8 +110,8 @@ public class VRAMLeak {
 			GLFW.glfwSwapBuffers(window);
 		}
 
+		debugCallback.destroy();
 		GLFW.glfwDestroyWindow(window);
-
 		GLFW.glfwTerminate();
 	}
 
@@ -134,20 +134,6 @@ public class VRAMLeak {
 		final int textureDataType = GL_UNSIGNED_BYTE;
 		final int width = 4096;
 		final int height = 4096;
-		/* when texture is small enough leaked VRAM clears by itself
-		for example:
-			for 4096x4096 texture, GPU memory spills to RAM and crashes GPU driver when RAM is fully filled
-			for 2048x2048 texture it will peak and clear at around >7000 MB VRAM used (by process)
-			for 1280x1280 texture it will peak and clear at around 3000 MB VRAM used (by process)
-			for 1024x1024 texture it will peak and clear at around 2800 MB VRAM used (by process)
-			for 512x1024 texture it will peak and clear at around 2800 MB VRAM used (by process)
-			for 1024x512 texture it will peak and clear at around 2800 MB VRAM used (by process)
-			for 768x768 texture it will peak and clear at around 1600 MB VRAM used (by process)
-			for 512x512 texture it will peak and clear at around 1000 MB VRAM used (by process)
-			for 256x256 texture it will peak and clear at around 200 MB VRAM used (by process)
-
-			Tested on RX 7600 (8GB VRAM), 26.8.1 AMD Driver
-		 */
 
 		// setup a dummy texture
 		glBindTexture(textureType, textureID);
@@ -193,7 +179,7 @@ public class VRAMLeak {
 		glDeleteTextures(textureID);
 	}
 
-	public static enum Mode {
+	private enum Mode {
 		STEP,
 		CONTINUOUS
 	}
